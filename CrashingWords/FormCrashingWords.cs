@@ -13,7 +13,7 @@ namespace CrashingWords
 
 
         int crashingIndexPos;
-        int lenght;
+        int wordsLenght;
 
         private void BtnCrashingWords_Click(object sender, EventArgs e)
         {
@@ -36,7 +36,7 @@ namespace CrashingWords
 
                 if (IsCrashingWords(line1, line2))
                 {
-                    lenght = line1.Length;
+                    wordsLenght = line1.Length;
                     string firstWord = CheckWhichFirst(line1, line2);
 
                     if (firstWord == line1)
@@ -140,9 +140,9 @@ namespace CrashingWords
 
         private void Display(string[,] words)
         {
-            for (int i = 0; i < lenght; i++)
+            for (int i = 0; i < wordsLenght; i++)
             {
-                for (int j = 0; j < lenght; j++)
+                for (int j = 0; j < wordsLenght; j++)
                 {
                     TxtResult.Text += words[i, j];
                 }
