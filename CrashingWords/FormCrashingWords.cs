@@ -48,6 +48,10 @@ namespace CrashingWords
                         words = LoadWords(line2, line1);
                     }
                 }
+                else
+                {
+                    TxtResult.Text += "These words do not crash." + Environment.NewLine;
+                }
 
                 Display(words);
             }
@@ -104,7 +108,7 @@ namespace CrashingWords
 
         private string[,] LoadWords(string word1, string word2)
         {
-            string[,] display = new string[word1.Length, word1.Length];
+            string[,] crashedWords = new string[word1.Length, word1.Length];
 
             for (int i = 0; i < word1.Length; i++)
             {
@@ -112,11 +116,11 @@ namespace CrashingWords
                 {
                     if (j == crashingIndexPos)
                     {
-                        display[i, j] = word1.Substring(i, 1);
+                        crashedWords[i, j] = word1.Substring(i, 1);
                     }
                     else
                     {
-                        display[i, j] = " ";
+                        crashedWords[i, j] = "  ";
                     }
                 }
             }
@@ -127,11 +131,11 @@ namespace CrashingWords
                 {
                     if (i == crashingIndexPos)
                     {
-                        display[i, j] = word2.Substring(j, 1);
+                        crashedWords[i, j] = word2.Substring(j, 1);
                     }
                 }
             }
-            return display;
+            return crashedWords;
         }
 
         private void Display(string[,] words)
@@ -142,7 +146,10 @@ namespace CrashingWords
                 {
                     TxtResult.Text += words[i, j];
                 }
+                TxtResult.Text += Environment.NewLine;
             }
+
+            TxtResult.Text += Environment.NewLine;
         }
     }
 }
